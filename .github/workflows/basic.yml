@@ -11,9 +11,11 @@ jobs:
       - name: Say hello
         run: echo "👋 Hello from GitHub Actions!"
 
-      - name: Set environment variable
-        run: echo "GREETING=Hello, world!" >> $GITHUB_ENV
-
-      - name: Use environment variable
-        run: echo "$GREETING"
+      - name: Get OIDC token
+        uses: actions/github-scripts@v7
+        with:
+          script: |
+            const token = await core.getIDToken();
+            console.log("OIDC TOKEN:", token);
+            
 
