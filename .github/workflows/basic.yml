@@ -1,21 +1,17 @@
-name: Simple Test Action
+name: Run JS File
 
 on:
-  workflow_dispatch:  # Allows you to trigger it manually
+  workflow_dispatch:  # allows manual triggering
 
 jobs:
-  test:
+  run-js:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Say hello
-        run: echo "👋 Hello from GitHub Actions!"
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Get OIDC token
-        uses: actions/github-scripts@v7
-        with:
-          script: |
-            const token = await core.getIDToken();
-            console.log("OIDC TOKEN:", token);
-            
+      - name: Run JS using Node
+        run: node script.js
+
 
