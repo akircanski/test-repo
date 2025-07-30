@@ -1,14 +1,17 @@
-    name: 'My JavaScript Action'
-    description: 'A simple action to demonstrate JavaScript execution.'
-    inputs:
-      who-to-greet:
-        description: 'Who to greet in the log'
-        required: true
-        default: 'World'
-    outputs:
-      time:
-        description: 'The time of greeting'
-    runs:
-      using: 'node20' # Or a compatible Node.js version like 'node16', 'node18'
-      main: 'index.js' # The main JavaScript file to execute
+name: Example Workflow
+
+on:
+  workflow_dispatch:  # allows manual triggering from GitHub UI
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Step 1 - Set output
+        id: set-output
+        run: echo "value=Hello, world!" >> $GITHUB_OUTPUT
+
+      - name: Step 2 - Use output
+        run: echo "The output was: ${{ steps.set-output.outputs.value }}"
 
