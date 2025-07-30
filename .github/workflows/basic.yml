@@ -1,17 +1,16 @@
-name: Example Workflow
+name: Run JS File
 
 on:
-  workflow_dispatch:  # allows manual triggering from GitHub UI
+  workflow_dispatch:  # allows manual triggering
 
 jobs:
-  demo:
+  run-js:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Step 1 - Set output
-        id: set-output
-        run: echo "value=Hello, world!" >> $GITHUB_OUTPUT
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Step 2 - Use output
-        run: echo "The output was: ${{ steps.set-output.outputs.value }}"
+      - name: Run JS using Node
+        run: node script.js
 
