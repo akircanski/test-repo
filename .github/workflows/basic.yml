@@ -1,17 +1,14 @@
-name: Run JS File
-
-on:
-  workflow_dispatch:  # allows manual triggering
-
-jobs:
-  run-js:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Run JS using Node
-        run: node script.js
-
+    name: 'My JavaScript Action'
+    description: 'A simple action to demonstrate JavaScript execution.'
+    inputs:
+      who-to-greet:
+        description: 'Who to greet in the log'
+        required: true
+        default: 'World'
+    outputs:
+      time:
+        description: 'The time of greeting'
+    runs:
+      using: 'node20' # Or a compatible Node.js version like 'node16', 'node18'
+      main: 'index.js' # The main JavaScript file to execute
 
