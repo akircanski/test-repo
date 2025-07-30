@@ -1,26 +1,19 @@
-name: GitHub OIDC Token Example
+name: Simple Test Action
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # Allows you to trigger it manually
 
 jobs:
-  get-oidc-token:
+  test:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write   # Required for OIDC!
-      contents: read
 
     steps:
-      - name: Request OIDC token
-        id: oidc
-        run: |
-          echo "Requesting OIDC token..."
-          TOKEN=$(curl -s -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-                      "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://vault.example.com" | jq -r '.value')
+      - name: Say hello
+        run: echo "👋 Hello from GitHub Actions!"
 
-          echo "::add-mask::$TOKEN"
-          echo "OIDC token acquired successfully."
+      - name: Set environment variable
+        run: echo "GREETING=Hello, world!" >> $GITHUB_ENV
 
-      - name: Done
-        run: echo "OIDC setup test complete."
+      - name: Use environment variable
+        run: echo "$GREETING"
 
