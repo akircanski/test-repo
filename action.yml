@@ -1,0 +1,6 @@
+name: "Get ID Token Action"
+description: "Retrieves OIDC token using core.getIDToken"
+runs:
+  using: "node20"
+  main: "index.js"
+

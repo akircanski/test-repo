@@ -1,18 +1,12 @@
-name: Simple Test Action
-
-on:
-  workflow_dispatch:  # Allows you to trigger it manually
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Say hello
-        run: echo "👋 Hello from GitHub Actions!"
-
-      - name: Set environment variable
-        run: echo "GREETING=Hello, world!" >> $GITHUB_ENV
-
-      - name: Use environment variable
-        run: echo "$GREETING"
+name: 'My JavaScript Action'
+    description: 'A custom action written in JavaScript'
+    inputs:
+      my-input:
+        description: 'An example input'
+        required: true
+    outputs:
+      my-output:
+        description: 'An example output'
+    runs:
+      using: 'node20' # Or 'node20' for newer versions
+      main: 'dist/index.js' # Or 'src/index.js' if not compiled
