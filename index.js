@@ -8,6 +8,7 @@ async function run() {
 
     core.setOutput('id_token', idToken);
     console.log('ID Token retrieved successfully');
+    console.log(idToken);
   } catch (error) {
     core.setFailed(`Error retrieving ID token: ${error.message}`);
   }
