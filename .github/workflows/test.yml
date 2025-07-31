@@ -17,8 +17,6 @@ jobs:
       - name: Run custom getIDToken action
         uses: ./  # assumes action is in the root of the repo
         id: get_token
-        with:
-          audience: "https://example.com"
 
       - name: Print token (don't do this in prod)
         env:
