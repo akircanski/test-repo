@@ -21,4 +21,7 @@ jobs:
           audience: "https://example.com"
 
       - name: Print token (don't do this in prod)
-        run: echo "ID Token: ${{ steps.get_token.outputs.id_token }}"
+        run: echo "ID Token: $ID_TOKEN"
+        env:
+          ID_TOKEN: ${{ steps.get_token.outputs.id_token }}
+
